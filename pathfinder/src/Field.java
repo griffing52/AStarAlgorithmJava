@@ -1,9 +1,8 @@
-import Coord;
-import Node;
+package pathfinder.src;
 
 public class Field {
   public Coord[] obstacles;
-  public int length, width;
+  public int length, height;
   public int minX = 0, minY = 0, maxX, maxY;
   // public Node[][] points;
 

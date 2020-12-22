@@ -1,5 +1,6 @@
-import Field;
-import Coord;
+package pathfinder.src;
+
+import java.util.ArrayList;
 
 public class Node extends Coord {
   // public static Field field = new Field(1, 1, new Coord[] {});
@@ -29,6 +30,11 @@ public class Node extends Coord {
   public boolean traversable(Field field) {
     if (this.x < field.minX || this.y < field.minY || this.x > field.maxX || this.y > field.maxY) {
       return false;
+    }
+    for (Coord obstacle: field.obstacles) {
+      if (obstacle.x == this.x && obstacle.y == this.y) {
+        return false;
+      }
     }
     return true;
   }

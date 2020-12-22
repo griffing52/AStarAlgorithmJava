@@ -1,11 +1,11 @@
-import Node;
-import Field;
+package pathfinder.src;
+
 import java.util.ArrayList;
 
 public class AStar {
   private Field field;
   private Coord goal;
-  private ArrayList<Node> OPENED, CLOSED;
+  private ArrayList<Node> OPENED = new ArrayList<Node>(), CLOSED = new ArrayList<Node>();
 
   public AStar(Field field, Coord start, Coord goal) {
     this.goal = goal;
@@ -36,7 +36,7 @@ public class AStar {
       }
 
       for (Coord neighboor: findNeighboors(current)) {
-        nNode = new Node(neighboor, goal, current.pathLength+1);
+        Node nNode = new Node(neighboor, goal, current.pathLength+1);
         if (!nNode.traversable(field) || CLOSED.contains(nNode)) {
           continue;
         }
@@ -48,7 +48,7 @@ public class AStar {
           }
         }
       }
-    }
+  }
     return current;
   }
 }

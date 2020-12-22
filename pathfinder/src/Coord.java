@@ -1,3 +1,5 @@
+package pathfinder.src;
+
 import java.lang.Math;
 
 public class Coord {
