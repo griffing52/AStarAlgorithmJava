@@ -31,4 +31,26 @@ public class Field {
     this.maxX = maxX;
     this.maxY = maxY;
   }
+  
+  public static Field ArrayToField(int[][] arr) {
+    int i = 0;
+    for (int[] row: arr) {
+      for (int point: row) {
+        if (point == 1) {
+          i++;
+        }
+      }
+    }
+    Coord[] barriers = new Coord[i];
+    i = 0;
+    for (int j = 0; j < arr.length; j++) {
+      for (int k = 0; k < arr[j].length; k++) {
+        if (arr[j][k] == 1) {
+          barriers[i] = new Coord(k, j);
+          i++;
+        }
+      }
+    }
+    return new Field(arr[0].length, arr.length, barriers);
+  }
 }
