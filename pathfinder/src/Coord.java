@@ -43,9 +43,17 @@ public class Coord {
             .filter(x -> x.distance(this) >= minDistance)
             .min(Comparator.comparing(this::distance))
             .orElseThrow(NoSuchElementException::new);
-    }
+        }
     public boolean exists() {
         return !(this.x == farPoint.x && this.y == farPoint.y); 
+    }
+    public boolean equals(Coord a) {
+        return (this.x == a.x && this.y == a.y);
+    }
+    public boolean inside(ArrayList<Node> arr) {
+        return arr
+            .stream()
+            .anyMatch(this::equals);
     }
     public static String toString(Coord a) {
         return (a.exists()) ? "("+a.x+", "+a.y+")" : "Doesn't exist";
@@ -64,4 +72,5 @@ public class Coord {
             .collect(Collectors.toList())
             .toArray(new Coord[0]);
     }
+
 }
