@@ -28,7 +28,7 @@ public class Node extends Coord {
   }
 
   public boolean traversable(Field field) {
-    if (this.x < field.minX || this.y < field.minY || this.x > field.maxX || this.y > field.maxY) {
+    if (this.x < field.minX || this.y < field.minY || this.x >= field.maxX || this.y >= field.maxY) {
       return false;
     }
     for (Coord obstacle: field.obstacles) {

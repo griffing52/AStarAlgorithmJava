@@ -29,6 +29,7 @@ public class AStar {
       }
       current = lowest;
       OPENED.remove(current);
+      System.out.println(Coord.toString(current));
 
       if (current.x == this.goal.x && current.y == this.goal.y) {
         finished = true;

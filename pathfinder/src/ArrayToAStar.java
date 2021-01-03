@@ -9,17 +9,15 @@ public class ArrayToAStar {
         Coord goal = new Coord();
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                switch (arr[i][j]) {
-                    case 2:
-                        start.set(j, i);
-                    case 3:
-                        goal.set(j, i);
+                if (arr[i][j] == 2) {
+                    start = new Coord(j, i);
+                } else if (arr[i][j] == 3) {
+                    goal = new Coord(j, i);
                 }
             }
         }
-        
+            
         Field map = Field.ArrayToField(arr);
-    
         route = new AStar(map, start, goal);
     }
 }
