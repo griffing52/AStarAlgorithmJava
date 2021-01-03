@@ -1,6 +1,7 @@
 package pathfinder.src;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AStar {
   private Field field;
@@ -35,6 +36,12 @@ public class AStar {
         finished = true;
         break;
       }
+
+      // Arrays.asList(findNeighboors(current))
+      //   .stream()
+      //   .map(x -> new Object(x, new Node(neighboor, goal, current.pathLength+1)))
+      //   .filter(x -> x[1].traversable(field))
+      //   .filter(x -> !CLOSED.contains(x[1]));
 
       for (Coord neighboor: findNeighboors(current)) {
         Node nNode = new Node(neighboor, goal, current.pathLength+1);
