@@ -28,6 +28,11 @@ public class Coord {
         this.x = x;
         this.y = x;
     }
+    public boolean traversable(Field field) {
+        return !(Arrays.asList(field.obstacles)
+            .stream()
+            .anyMatch(this::equals));
+    }
     public double distance(Coord a) {
         return Math.sqrt(Math.pow(this.x-a.x, 2) + Math.pow(this.y-a.y, 2));
     }
@@ -39,11 +44,11 @@ public class Coord {
     }
     public Coord closestTo (Coord[] coords, int minDistance) {
         return Arrays.asList(coords)
-            .stream()
-            .filter(x -> x.distance(this) >= minDistance)
-            .min(Comparator.comparing(this::distance))
-            .orElseThrow(NoSuchElementException::new);
-        }
+        .stream()
+        .filter(x -> x.distance(this) >= minDistance)
+        .min(Comparator.comparing(this::distance))
+        .orElseThrow(NoSuchElementException::new);
+    }
     public boolean exists() {
         return !(this.x == farPoint.x && this.y == farPoint.y); 
     }
@@ -52,8 +57,20 @@ public class Coord {
     }
     public boolean inside(ArrayList<Node> arr) {
         return arr
-            .stream()
-            .anyMatch(this::equals);
+        .stream()
+        .anyMatch(this::equals);
+    }
+    public Coord alreadyIn(ArrayList<Coord> arr) {
+        // arr
+        //     .stream()
+        //     .max((Comparator.comparing(x -> (x.equals(this)) ? 1 : 0)))
+        //     .ifPresent(x -> x);
+        for (Coord point: arr) {
+            if (point.x == this.x && point.y == this.y) {
+                return point;
+                }
+            }
+        return this;
     }
     public static String toString(Coord a) {
         return (a.exists()) ? "("+a.x+", "+a.y+")" : "Doesn't exist";
@@ -72,5 +89,4 @@ public class Coord {
             .collect(Collectors.toList())
             .toArray(new Coord[0]);
     }
-
 }

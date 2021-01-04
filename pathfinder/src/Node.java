@@ -27,33 +27,7 @@ public class Node extends Coord {
     this.pathLength = h;
   }
 
-  public boolean traversable(Field field) {
-    if (this.x < field.minX || this.y < field.minY || this.x >= field.maxX || this.y >= field.maxY) {
-      return false;
-    }
-    for (Coord obstacle: field.obstacles) {
-      if (obstacle.x == this.x && obstacle.y == this.y) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   public void setParent(Node parent) {
     this.parent = parent;
   }
-
-  public Node alreadyIn(ArrayList<Node> arr) {
-    for (Node point: arr) {
-      if (point.x == this.x && point.y == this.y) {
-        return point;
-      }
-      // return (point.x == this.x && point.y == this.y)
-    }
-    return this;
-  }
-
-  // public static setField(Field field) {
-  //   Node.field = field;
-  // }
 }

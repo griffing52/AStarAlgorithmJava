@@ -14,7 +14,7 @@ public class AStar {
     this.OPENED.add(new Node(start, goal, 0));
   }
 
-  private Coord[] findNeighboors(Node center) {
+  private Coord[] findNeighbors(Node center) {
     return Coord.intArrToCoord(new int[][] {{center.x-1, center.y}, {center.x+1, center.y}, {center.x, center.y+1}, {center.x, center.y-1}});
   }
 
@@ -37,15 +37,20 @@ public class AStar {
         break;
       }
 
-      // Arrays.asList(findNeighboors(current))
+      // Coord[] neighbors = findNeighbors(current);
+      // Arrays.asList(neighbors)
       //   .stream()
-      //   .map(x -> new Object(x, new Node(neighboor, goal, current.pathLength+1)))
-      //   .filter(x -> x[1].traversable(field))
-      //   .filter(x -> !CLOSED.contains(x[1]));
+      //   .map(x -> new Node(x, goal, current.pathLength+1))
+      //   .filter(x -> x.traversable(field))
+      //   .filter(x -> x.inside(CLOSED))
+      //   .filter(x -> !x.inside(OPENED) || x.pathLength < nNode.alreadyIn(OPENED).pathLength)
+      //   .forEach(x -> x.setParent(current)
+      //   .filter(x -> !x.inside(OPENED))
+      //   .forEach(OPENED::add);
 
-      for (Coord neighboor: findNeighboors(current)) {
-        Node nNode = new Node(neighboor, goal, current.pathLength+1);
-        if (!nNode.traversable(field) || CLOSED.contains(nNode)) {
+      for (Coord neighbor: findNeighbors(current)) {
+        Node nNode = new Node(neighbor, goal, current.pathLength+1);
+        if (!nNode.traversable(field) || nNode.inside(CLOSED)) {
           continue;
         }
 
