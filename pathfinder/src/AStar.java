@@ -6,13 +6,18 @@ import java.util.Comparator;
 public class AStar {
   private Field field;
   private Coord goal;
+  private Coord start;
   private ArrayList<Node> OPENED = new ArrayList<Node>(), CLOSED = new ArrayList<Node>();
   public long time;
 
   public AStar(Field field, Coord start, Coord goal) {
     this.goal = goal;
     this.field = field;
-    this.OPENED.add(new Node(start, goal, 0));
+    this.start = start;
+    if (!this.start.traversable(field)) {
+      this.start.set((start.x < field.minX) ? field.minX : field.maxX , (start.y < field.minY) ? field.minY : field.maxY);
+    }
+    this.OPENED.add(new Node(this.start, goal, 0));
     time = System.currentTimeMillis();
   }
 

@@ -22,7 +22,7 @@ public class Coord {
     }
     public void set(int x, int y) {
         this.x = x;
-        this.y = x;
+        this.y = y;
     }
     public int getX() {
         return this.x;
