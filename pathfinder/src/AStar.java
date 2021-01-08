@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class AStar {
-  //TODO find reason for repeating current number
   private Field field;
   private Coord goal;
   private ArrayList<Node> OPENED = new ArrayList<Node>(), CLOSED = new ArrayList<Node>();
+  public long time;
 
   public AStar(Field field, Coord start, Coord goal) {
     this.goal = goal;
     this.field = field;
     this.OPENED.add(new Node(start, goal, 0));
+    time = System.currentTimeMillis();
   }
 
   private Coord[] findNeighbors(Node center) {
@@ -36,6 +37,7 @@ public class AStar {
 
       if (current.equals(goal)) {
         finished = true;
+        System.out.println((double) (System.currentTimeMillis() - time)/1000);
         break;
       }
 
