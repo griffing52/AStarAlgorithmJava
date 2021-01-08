@@ -23,6 +23,14 @@ public class Node extends Coord  {
     this.setF(goal, h);
   }
 
+  // public void set(Node node) {
+  //   this.x = node.x;
+  //   this.y = node.y;
+  //   this.f = node.f;
+  //   this.pathLength = node.pathLength;
+  //   setParent(node.parent);
+  // }
+
   public void setF(Coord goal, int h) {
     this.f = (int) this.distance(goal) + h;
     this.pathLength = h;

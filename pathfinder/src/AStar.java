@@ -23,10 +23,13 @@ public class AStar {
     boolean finished = false;
     Node current = new Node();
     while (!finished) {
+      Node last = current;
       current = OPENED
         .stream()
-        .min(Comparator.comparing(x -> x.f))
-        .get(); // TODO sort and take first value
+        .sorted(Comparator.comparing(x -> x.f))
+        .filter(x -> !last.equals(x)) 
+        .findFirst()
+        .orElse(current);
       OPENED.remove(current);
       CLOSED.add(current);
       System.out.println(Coord.toString(current));

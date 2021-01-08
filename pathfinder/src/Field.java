@@ -9,8 +9,8 @@ public class Field {
     this.obstacles = obstacles;
     this.length = length;
     this.height = height;
-    this.maxY = height;
-    this.maxX = length;
+    this.maxY = height-1;
+    this.maxX = length-1;
   }
 
   // sets minimums and maxium field values
