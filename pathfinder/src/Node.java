@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 Galimi
+ *   All rights reserved.
+ */
 package pathfinder.src;
 
 import java.util.ArrayList;
@@ -36,8 +40,9 @@ public class Node extends Coord  {
     this.pathLength = h;
   }
 
-  public void setParent(Node parent) {
+  public Node setParent(Node parent) {
     this.parent = parent;
+    return this;
   }
 
   public Node alreadyIn(ArrayList<Node> arr) {

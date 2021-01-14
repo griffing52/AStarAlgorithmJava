@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 Galimi
+ *   All rights reserved.
+ */
 package pathfinder.src;
 
 import java.lang.Math;
@@ -42,18 +46,21 @@ public class Coord {
     public double distance(Coord a) {
         return Math.sqrt(Math.pow(this.x-a.x, 2) + Math.pow(this.y-a.y, 2));
     }
-    public Coord closestTo (Coord[] coords) {
+    public Coord closestTo(Coord[] coords) {
         return Arrays.asList(coords)
             .stream()
             .min(Comparator.comparing(this::distance))
             .orElseThrow(NoSuchElementException::new);
     }
-    public Coord closestTo (Coord[] coords, int minDistance) {
+    public Coord closestTo(Coord[] coords, int minDistance) {
         return Arrays.asList(coords)
             .stream()
             .filter(x -> x.distance(this) >= minDistance)
             .min(Comparator.comparing(this::distance))
             .orElseThrow(NoSuchElementException::new);
+    }
+    public Coord[] findNeighbors() {
+        return Coord.intArrToCoord(new int[][] {{this.x-1, this.y}, {this.x+1, this.y}, {this.x, this.y+1}, {this.x, this.y-1}});
     }
     public boolean exists() {
         return !(this.x == farPoint.x && this.y == farPoint.y); 

@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 Galimi
+ *   All rights reserved.
+ */
 package pathfinder.src;
 
 public class Field {

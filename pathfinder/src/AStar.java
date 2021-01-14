@@ -1,6 +1,11 @@
+/*
+ *   Copyright (c) 2021 Galimi
+ *   All rights reserved.
+ */
 package pathfinder.src;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class AStar {
@@ -21,9 +26,6 @@ public class AStar {
     time = System.currentTimeMillis();
   }
 
-  private Coord[] findNeighbors(Node center) {
-    return Coord.intArrToCoord(new int[][] {{center.x-1, center.y}, {center.x+1, center.y}, {center.x, center.y+1}, {center.x, center.y-1}});
-  }
 
   public Node calculate() {
     boolean finished = false;
@@ -46,30 +48,33 @@ public class AStar {
         break;
       }
 
-      // Coord[] neighbors = findNeighbors(current);
-      // Arrays.asList(neighbors)
-      //   .stream()
-      //   .map(x -> new Node(x, goal, current.pathLength+1))
-      //   .filter(x -> x.traversable(field))
-      //   .filter(x -> x.inside(CLOSED))
-      //   .filter(x -> !x.inside(OPENED) || x.pathLength < nNode.alreadyIn(OPENED).pathLength)
-      //   .forEach(x -> x.setParent(current)
-      //   .filter(x -> !x.inside(OPENED))
-      //   .forEach(OPENED::add);
+      Coord[] neighbors = current.findNeighbors();
+      int pathLength = current.pathLength+1;
+      Node now = current;
+      Arrays.asList(neighbors)
+        .stream()
+        .map(x -> new Node(x, goal, pathLength))
+        .filter(x -> x.traversable(field) && !x.inside(CLOSED) && (!x.inside(OPENED) || x.pathLength < x.alreadyIn(OPENED).pathLength))
+        .map(x -> x.setParent(now))
+        .filter(x -> !x.inside(OPENED))
+        .forEach(OPENED::add);
 
-      for (Coord neighbor: findNeighbors(current)) {
-        Node nNode = new Node(neighbor, goal, current.pathLength+1);
-        if (!nNode.traversable(field) || nNode.inside(CLOSED)) {
-          continue;
-        }
 
-        if (!OPENED.contains(nNode) || nNode.pathLength < nNode.alreadyIn(OPENED).pathLength) {
-          nNode.setParent(current);
-          if (!OPENED.contains(nNode)) {
-            OPENED.add(nNode);
-          }
-        }
-      }
+      // .forEach(x -> System.out.println(Coord.toString(x)));
+
+      // for (Coord neighbor: current.findNeighbors()) {
+      //   Node nNode = new Node(neighbor, goal, current.pathLength+1);
+      //   if (!nNode.traversable(field) || nNode.inside(CLOSED)) {
+      //     continue;
+      //   }
+
+      //   if (!OPENED.contains(nNode) || nNode.pathLength < nNode.alreadyIn(OPENED).pathLength) {
+      //     nNode.setParent(current);
+      //     if (!OPENED.contains(nNode)) {
+      //       OPENED.add(nNode);
+      //     }
+      //   }
+      // }
   }
     return current;
   }

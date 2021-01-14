@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 package pathfinder.src;
 
 // 1 == obstacle, 2 == start, 3 == goal
