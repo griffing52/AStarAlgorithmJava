@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2021 
+ *   Copyright (c) 2021 Galimi
  *   All rights reserved.
  */
 package pathfinder.src;

@@ -40,7 +40,7 @@ public class AStar {
         .orElse(current);
       OPENED.remove(current);
       CLOSED.add(current);
-      System.out.println(Coord.toString(current));
+      // System.out.println(Coord.toString(current)); // prints current Node for debugging
 
       if (current.equals(goal)) {
         finished = true;
