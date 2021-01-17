@@ -162,7 +162,7 @@ public class App {
     }
     System.out.println(str);
 
-    Image createImg = new Image(arr);
+    new Image(arr);
 
     // System.out.println(Coord.toString(res));
     // Node last = res;
