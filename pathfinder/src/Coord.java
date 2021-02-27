@@ -44,7 +44,8 @@ public class Coord {
             this.y <= field.maxY;
     }
     public double distance(Coord a) {
-        return Math.sqrt(Math.pow(this.x-a.x, 2) + Math.pow(this.y-a.y, 2));
+        return Math.pow(this.x-a.x, 2) + Math.pow(this.y-a.y, 2);
+        // return Math.sqrt(Math.pow(this.x-a.x, 2) + Math.pow(this.y-a.y, 2));
     }
     public Coord closestTo(Coord[] coords) {
         return Arrays.asList(coords)
@@ -55,7 +56,7 @@ public class Coord {
     public Coord closestTo(Coord[] coords, int minDistance) {
         return Arrays.asList(coords)
             .stream()
-            .filter(x -> x.distance(this) >= minDistance)
+            .filter(x -> x.distance(this) >= minDistance*minDistance)
             .min(Comparator.comparing(this::distance))
             .orElseThrow(NoSuchElementException::new);
     }

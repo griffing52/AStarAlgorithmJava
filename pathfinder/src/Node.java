@@ -36,7 +36,9 @@ public class Node extends Coord  {
   // }
 
   public void setF(Coord goal, int h) {
-    this.f = (int) this.distance(goal) + h;
+    // this.f = (int) (Math.sqrt(this.distance(goal)) + h); // TODO maybe find somehow to remove sqrt
+    // this.f = (int) (this.distance(goal) + h);
+    this.f = (int) (Math.abs(this.x-goal.x) + Math.abs(this.y-goal.y) + h);
     this.pathLength = h;
   }
 

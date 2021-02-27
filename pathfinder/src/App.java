@@ -7,6 +7,7 @@ package pathfinder.src;
 import java.io.IOException;
 
 import pathfinder.src.image.Image;
+// import pathfinder.src.image.ImageToArray;
 
 public class App {
   public static void main(String[] args) throws IOException {
@@ -160,9 +161,11 @@ public class App {
       }
       str += "\n";
     }
-    System.out.println(str);
+    // System.out.println(str);
 
     new Image(arr);
+
+    // new ImageToArray("path.png");
 
     // System.out.println(Coord.toString(res));
     // Node last = res;
