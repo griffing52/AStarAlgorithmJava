@@ -24,6 +24,7 @@ public class Image {
         }
 
         File file = new File("path.png");
+        // ImageIO.write(buffImg, "png", file);
         ImageIO.write(buffImg, "png", file);
         // Arrays.asList(arr)
         //     .stream()
