@@ -3,6 +3,10 @@
 ## Project Overview
 This Java project visualizes the pathfinding process of the A* algorithm on a grid. The program finds the shortest path from a starting point to a goal point, marking each step in the path and displaying the result. The grid layout and path progression are printed to the console, and an image representation is generated for easier visualization.
 
+![Path Example](path.png)
+
+![Path Result](pathfinder/lib/path.png)
+
 ## Features
 - **A\* Algorithm Implementation:** Efficient pathfinding using the A* algorithm, balancing cost and distance to find the shortest path.
 - **Console Visualization:** Outputs the grid to the console, with symbols indicating path (`-`), obstacles (`*`), and free space.
