@@ -11,7 +11,7 @@ This Java project visualizes the pathfinding process of the A* algorithm on a gr
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/AStarVisualization.git```
+   git clone https://github.com/yourusername/AStarVisualization.git
 2.  Open the project in a Java IDE (e.g., IntelliJ IDEA, Eclipse).
 3.  Ensure Java Development Kit (JDK) 11 or higher is installed.
 
